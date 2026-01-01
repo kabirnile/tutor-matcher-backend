@@ -1,3 +1,11 @@
+const db = mysql.createPool({
+    host: process.env.DB_HOST,      // This pulls the IP from Render
+    user: process.env.DB_USER,      // This pulls the User from Render
+    password: process.env.DB_PASS,  // This pulls the Password from Render
+    database: process.env.DB_NAME,  // This pulls the DB Name from Render
+    port: 3306
+});
+
 const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
@@ -107,4 +115,5 @@ app.post('/match-tutor', (req, res) => {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Smart Matching Server running on port ${PORT}`);
+
 });
